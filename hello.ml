@@ -1,1 +1,2 @@
-let () = Dream.run (fun _ -> Dream.respond "Hello, world!")
+let () =
+  Dream.run @@ Dream.logger @@ fun _ -> Dream.respond "Hello, world!"
