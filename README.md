@@ -3,5 +3,5 @@
 ### build & exec
 
 ```
-dune exec ./hello.exe
+dune exec ./server.exe
 ```
