@@ -1,8 +1,12 @@
 let () =
-  Dream.run ~debug:true @@ Dream.logger
+  Dream.run @@ Dream.logger
   @@ Dream.router
        [
-         Dream.get "/bad" (fun _ -> Dream.empty `Bad_Request);
-         Dream.get "/fail" (fun _ -> raise (Failure "The Web app failed!"));
+         Dream.get "/" (fun request ->
+             Dream.log "Sending greeting to %s!" (Dream.client request);
+             Dream.respond "Good morning, world!");
+         Dream.get "/fail" (fun _ ->
+             Dream.warning (fun log -> log "Raising an exception!");
+             raise (Failure "The Web app failed!"));
        ]
   @@ Dream.not_found
