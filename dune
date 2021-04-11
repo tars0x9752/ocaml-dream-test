@@ -1,5 +1,5 @@
 (executable
  (name app)
- (libraries dream)
+ (libraries dream tyxml)
  (preprocess
   (pps lwt_ppx)))
